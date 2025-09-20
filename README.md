@@ -1,0 +1,1 @@
+The Skin Disease Detection System is an advanced deep learning-based project that accurately detects and classifies various skin diseases from images. The system uses a hybrid architecture combining EfficientNetB0 and a custom CNN, along with advanced techniques for data augmentation
