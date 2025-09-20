@@ -1,0 +1,6 @@
+flask == 3.1.0
+tensorflow == 2.18.0
+numpy 
+Pillow ==11.1.0
+Werkzeug == 3.1.3
+

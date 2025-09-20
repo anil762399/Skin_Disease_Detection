@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DermaCare - Advanced Skin Disease Detection</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+  <!-- Background Animation -->
+  <div class="bg-animation">
+    <div class="medical-elements">
+      <div class="floating-element"><i class="fas fa-heartbeat"></i></div>
+      <div class="floating-element"><i class="fas fa-user-md"></i></div>
+      <div class="floating-element"><i class="fas fa-microscope"></i></div>
+      <div class="floating-element"><i class="fas fa-dna"></i></div>
+      <div class="floating-element"><i class="fas fa-stethoscope"></i></div>
+      <div class="floating-element"><i class="fas fa-pills"></i></div>
+    </div>
+    <div class="dna-helix">
+      <div class="dna-strand"></div>
+      <div class="dna-strand"></div>
+    </div>
+  </div>
+
+  <div class="stethoscope">
+    <i class="fas fa-stethoscope"></i>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="logo">
+      <i class="fas fa-heartbeat"></i>
+      DermaCare
+    </a>
+    <div class="nav-menu">
+      <button id="home-btn" class="nav-btn active" style="display: none;">
+        <i class="fas fa-home"></i> Home
+      </button>
+      <button id="about-btn" class="nav-btn" style="display: none;">
+        <i class="fas fa-info-circle"></i> About
+      </button>
+      <button id="feedback-btn" class="nav-btn" style="display: none;">
+        <i class="fas fa-comment"></i> Feedback
+      </button>
+      <button id="dashboard-btn" class="nav-btn" style="display: none;">
+        <i class="fas fa-chart-line"></i> Dashboard
+      </button>
+      <button id="user-profile" class="user-profile" style="display: none;">
+        <i class="fas fa-user-circle"></i>
+        <span id="user-name">Welcome</span>
+      </button>
+      <button id="logout-btn" class="nav-btn" style="display: none;">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+      <button id="mode-toggle" class="mode-toggle">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Container -->
+  <div class="main-container">
+    <div class="container">
+      
+      <!-- Authentication Section -->
+      <div id="auth" class="section active">
+        <div class="auth-section">
+          <div class="doctor-illustration">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <h1><i class="fas fa-lock"></i> Secure Access</h1>
+          <p class="auth-subtitle">Join thousands of users using AI-powered dermatology analysis</p>
+          
+          <div class="auth-tabs">
+            <button id="login-tab" class="auth-tab active">Login</button>
+            <button id="register-tab" class="auth-tab">Register</button>
+          </div>
+
+          <!-- Login Form -->
+          <form id="login-form" class="auth-form active">
+            <div class="form-group">
+              <label class="form-label" for="login-email">
+                <i class="fas fa-envelope"></i> Email Address
+              </label>
+              <input type="email" id="login-email" class="form-input" placeholder="Enter your email address" required>
+              <div class="error-message" id="login-email-error">Please enter a valid email address</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="login-password">
+                <i class="fas fa-key"></i> Password
+              </label>
+              <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+              <div class="error-message" id="login-password-error">Password must be at least 6 characters</div>
+            </div>
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="remember-me">
+                <span class="checkmark"></span>
+                Remember me
+              </label>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+              <button type="submit" class="action-btn pulse-medical">
+                <i class="fas fa-sign-in-alt"></i>
+                Secure Login
+              </button>
+            </div>
+          </form>
+
+          <!-- Register Form -->
+          <form id="register-form" class="auth-form">
+            <div class="form-group">
+              <label class="form-label" for="register-name">
+                <i class="fas fa-user"></i> Full Name
+              </label>
+              <input type="text" id="register-name" class="form-input" placeholder="Enter your full name" required>
+              <div class="error-message" id="register-name-error">Please enter your full name</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="register-email">
+                <i class="fas fa-envelope"></i> Email Address
+              </label>
+              <input type="email" id="register-email" class="form-input" placeholder="Enter your email address" required>
+              <div class="error-message" id="register-email-error">Please enter a valid email address</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="register-password">
+                <i class="fas fa-key"></i> Password
+              </label>
+              <input type="password" id="register-password" class="form-input" placeholder="Create a secure password (min 6 characters)" required>
+              <div class="error-message" id="register-password-error">Password must be at least 6 characters</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="register-confirm-password">
+                <i class="fas fa-lock"></i> Confirm Password
+              </label>
+              <input type="password" id="register-confirm-password" class="form-input" placeholder="Confirm your password" required>
+              <div class="error-message" id="register-confirm-password-error">Passwords do not match</div>
+            </div>
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" id="accept-terms" required>
+                <span class="checkmark"></span>
+                I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+              </label>
+            </div>
+            <div style="text-align: center; margin-top: 2rem;">
+              <button type="submit" class="action-btn pulse-medical">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Home Section -->
+      <div id="home" class="section">
+        <div class="doctor-illustration">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <h1><i class="fas fa-microscope"></i> Advanced Skin Analysis</h1>
+        <p class="section-subtitle">Upload a high-quality image of your skin concern for instant AI-powered analysis. Our advanced deep learning model can detect and classify various skin conditions with medical-grade accuracy.</p>
+        
+        <div class="analysis-stats">
+          <div class="stat-item">
+            <i class="fas fa-check-circle"></i>
+            <span>95% Accuracy</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-clock"></i>
+            <span>Instant Results</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>HIPAA Compliant</span>
+          </div>
+        </div>
+        
+        <!-- Upload Area -->
+        <div class="upload-area" id="upload-area">
+          <i class="fas fa-cloud-upload-alt upload-icon"></i>
+          <div class="upload-content">
+            <div class="upload-text">Click to upload or drag and drop</div>
+            <div class="upload-hint">Supports JPG, PNG, WebP (Max 10MB)</div>
+          </div>
+          <input type="file" id="upload-input" class="upload-input" accept="image/*" style="display: none;">
+          <div class="skin-visualization"></div>
+        </div>
+
+        <!-- Preview Container -->
+        <div class="preview-container" id="preview-container">
+          <img id="preview-img" class="preview-img" alt="Preview">
+          <div class="preview-overlay">
+            <i class="fas fa-search-plus"></i> Ready for Analysis
+          </div>
+        </div>
+
+        <!-- Predict Button -->
+        <div style="text-align: center; margin-top: 2rem;">
+          <button id="predict-btn" class="action-btn pulse-medical">
+            <i class="fas fa-brain"></i>
+            Analyze Image
+          </button>
+        </div>
+
+        <!-- Results Container -->
+        <div class="result-container" id="result-container">
+          <div class="result-header">
+            <i class="fas fa-check-circle"></i>
+            <h3>Analysis Complete</h3>
+          </div>
+          <div id="result-content"></div>
+          <div class="confidence-section">
+            <div class="confidence-label">Confidence Level</div>
+            <div class="confidence-bar">
+              <div class="confidence-fill" id="confidence-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Section -->
+      <div id="dashboard" class="section">
+        <div class="doctor-illustration">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h1><i class="fas fa-tachometer-alt"></i> Medical Dashboard</h1>
+        <p class="section-subtitle">Track your skin health journey with detailed analysis history and personalized insights.</p>
+        
+        <div class="user-dashboard">
+          <div class="dashboard-card stats-card">
+            <div class="card-header">
+              <h3><i class="fas fa-chart-bar"></i> Health Statistics</h3>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-box">
+                <span class="stat-number" id="total-analyses">0</span>
+                <span class="stat-label">Total Analyses</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number" id="avg-confidence">0%</span>
+                <span class="stat-label">Avg Confidence</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-card history-card">
+            <div class="card-header">
+              <h3><i class="fas fa-history"></i> Recent Analysis History</h3>
+              <button class="view-all-btn">View All</button>
+            </div>
+            <div class="analysis-history" id="analysis-history">
+              <div class="empty-state">
+                <i class="fas fa-clipboard-list"></i>
+                <p>No analyses yet. Upload your first skin image to get started!</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="dashboard-card profile-card">
+            <div class="card-header">
+              <h3><i class="fas fa-user-circle"></i> Profile Information</h3>
+              <button class="edit-profile-btn"><i class="fas fa-edit"></i></button>
+            </div>
+            <div class="profile-info" id="profile-info">
+              <div class="profile-item">
+                <span class="profile-label">Name:</span>
+                <span class="profile-value" id="profile-name">-</span>
+              </div>
+              <div class="profile-item">
+                <span class="profile-label">Email:</span>
+                <span class="profile-value" id="profile-email">-</span>
+              </div>
+              <div class="profile-item">
+                <span class="profile-label">Member Since:</span>
+                <span class="profile-value" id="profile-joined">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Section -->
+      <div id="about-us" class="section">
+        <div class="doctor-illustration">
+          <i class="fas fa-clinic-medical"></i>
+        </div>
+        <h1><i class="fas fa-user-md"></i> About DermaCare</h1>
+        <p class="section-subtitle">DermaCare represents the cutting edge of dermatological technology, combining advanced artificial intelligence with medical expertise to provide instant, accurate skin condition analysis.</p>
+        
+        <div class="about-content">
+          <div class="about-mission">
+            <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
+            <p>To democratize access to dermatological expertise through AI-powered technology, enabling early detection and better skin health outcomes for everyone, everywhere.</p>
+          </div>
+          
+          <div class="about-technology">
+            <h2><i class="fas fa-cogs"></i> Our Technology</h2>
+            <p>Our deep learning model is trained on over 100,000 medical images, validated by board-certified dermatologists, and continuously updated with the latest medical research.</p>
+          </div>
+        </div>
+        
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fas fa-brain feature-icon"></i>
+            <div class="feature-title">AI-Powered Analysis</div>
+            <p>Our deep learning model is trained on thousands of medical images, providing accurate detection of various skin conditions with confidence scores.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-shield-alt feature-icon"></i>
+            <div class="feature-title">Privacy Protected</div>
+            <p>Your images are processed securely and never stored on our servers. We prioritize your privacy and data security above all else.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-clock feature-icon"></i>
+            <div class="feature-title">Instant Results</div>
+            <p>Get immediate analysis results within seconds, helping you make informed decisions about your skin health quickly and efficiently.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-mobile-alt feature-icon"></i>
+            <div class="feature-title">Mobile Friendly</div>
+            <p>Access DermaCare from any device - desktop, tablet, or smartphone. Our responsive design works seamlessly across all platforms.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-certificate feature-icon"></i>
+            <div class="feature-title">Medical Grade Accuracy</div>
+            <p>Developed in collaboration with dermatologists and validated against clinical datasets for reliable, professional-grade results.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-history feature-icon"></i>
+            <div class="feature-title">Track Progress</div>
+            <p>Monitor your skin health over time with our analysis history and progress tracking features for better long-term care.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feedback Section -->
+      <div id="feedback" class="section">
+        <div class="doctor-illustration">
+          <i class="fas fa-comments-medical"></i>
+        </div>
+        <h1><i class="fas fa-comments"></i> Share Your Experience</h1>
+        <p class="section-subtitle">Your feedback helps us improve our AI model and provide better healthcare solutions. Share your thoughts, suggestions, or experiences with DermaCare.</p>
+        
+        <div class="feedback-container">
+          <form id="feedback-form" class="feedback-form">
+            <div class="feedback-categories">
+              <h3>Feedback Category</h3>
+              <div class="category-buttons">
+                <button type="button" class="category-btn active" data-category="general">
+                  <i class="fas fa-comment"></i> General
+                </button>
+                <button type="button" class="category-btn" data-category="bug">
+                  <i class="fas fa-bug"></i> Bug Report
+                </button>
+                <button type="button" class="category-btn" data-category="feature">
+                  <i class="fas fa-lightbulb"></i> Feature Request
+                </button>
+                <button type="button" class="category-btn" data-category="medical">
+                  <i class="fas fa-stethoscope"></i> Medical Feedback
+                </button>
+              </div>
+            </div>
+            
+            <div class="feedback-input-section">
+              <label for="feedback-text" class="feedback-label">
+                <i class="fas fa-edit"></i> Your Feedback
+              </label>
+              <textarea 
+                id="feedback-text" 
+                class="feedback-text" 
+                placeholder="Share your feedback, suggestions, or experience with DermaCare. Your input is valuable in helping us provide better healthcare solutions..."
+                required
+              ></textarea>
+              <div class="character-count">
+                <span id="char-count">0</span>/500 characters
+              </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+              <button type="submit" class="action-btn">
+                <i class="fas fa-paper-plane"></i>
+                Submit Feedback
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>DermaCare</h3>
+        <p>&copy; 2025 DermaCare. Advanced AI-Powered Dermatology Solutions.</p>
+        <p class="disclaimer">This tool is for educational purposes only. Always consult healthcare professionals for medical advice.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#privacy">Privacy Policy</a></li>
+          <li><a href="#terms">Terms of Service</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#help">Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Connect With Us</h4>
+        <div class="footer-social">
+          <a href="#" class="social-link" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Loading Overlay -->
+  <div class="loading-overlay" id="loading-overlay">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Analyzing your image with AI...</p>
+    </div>
+  </div>
+
+  <!-- Notification -->
+  <div class="notification" id="notification">
+    <div class="notification-content">
+      <i class="notification-icon"></i>
+      <span class="notification-text"></span>
+    </div>
+    <button class="notification-close">&times;</button>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
